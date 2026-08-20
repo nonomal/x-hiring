@@ -1,0 +1,59 @@
+{
+  "formatter": "language_server",
+  "format_on_save": "on",
+  "languages": {
+    "CSS": {
+      "language_servers": ["tailwindcss-language-server"]
+    },
+    "JavaScript": {
+      "formatter": [{ "language_server": { "name": "oxfmt" } }],
+      "code_action": "source.fixAll.oxc"
+    },
+    "TypeScript": {
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
+    },
+    "TSX": {
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
+    },
+    "JSON": {
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
+    }
+  },
+  "lsp": {
+    "oxlint": {
+      "initialization_options": {
+        "settings": {
+          "run": "onType",
+          "fixKind": "safe_fix",
+          "typeAware": true,
+          "unusedDisableDirectives": "deny"
+        }
+      }
+    },
+    "oxfmt": {
+      "initialization_options": {
+        "settings": {
+          "fmt.configPath": "./vite.config.ts",
+          "run": "onSave"
+        }
+      }
+    },
+    "typescript-language-server": {
+      "settings": {
+        "typescript": {
+          "preferences": {
+            "includePackageJsonAutoImports": "on"
+          }
+        }
+      }
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "classFunctions": ["cva", "cx", "cn"],
+        "experimental": {
+          "classRegex": ["[cls|className]\\s\\:\\=\\s\"([^\"]*)"]
+        }
+      }
+    }
+  }
+}

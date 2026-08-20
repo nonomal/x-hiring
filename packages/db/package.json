@@ -1,42 +1,32 @@
 {
-  "name": "@actijob/db",
-  "version": "1.0.0",
-  "main": "./index.ts",
-  "types": "./index.ts",
+  "name": "@actnow/db",
   "type": "module",
   "exports": {
-    ".": "./index.ts"
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./*": {
+      "default": "./src/*.ts"
+    }
   },
   "scripts": {
-    "clean": "git clean -xdf .turbo node_modules",
-    "build": "prisma generate",
-    "generate": "prisma generate",
-    "migrate-dev": "prisma migrate dev --skip-seed",
-    "migrate-deploy": "prisma migrate deploy",
-    "seed": "prisma db seed",
-    "studio": "prisma studio"
-  },
-  "prisma": {
-    "seed": "ts-node --transpileOnly --project ./tsconfig.seed.json ./seed-database.ts"
+    "db:generate": "drizzle-kit generate",
+    "db:seed": "tsx src/seed.ts",
+    "legacy:import": "tsx scripts/legacy-jobs-to-sql.ts",
+    "legacy:rollback": "tsx scripts/legacy-jobs-rollback.ts"
   },
   "dependencies": {
-    "@prisma/client": "5.4.2",
-    "prisma": "5.4.2",
-    "ts-pattern": "^5.6.0"
+    "@actnow/common": "workspace:*",
+    "better-auth": "catalog:",
+    "drizzle-orm": "catalog:",
+    "nanoid": "^6.0.1",
+    "smol-toml": "^1.8.0",
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "@actijob/eslint-config": "workspace:*",
-    "@actijob/tsconfig": "workspace:*",
-    "@types/node": "^22.10.5",
-    "dotenv": "^16.4.7",
-    "dotenv-cli": "^8.0.0",
-    "ts-node": "^10.9.2",
-    "typescript": "5.2.2"
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@actijob/eslint-config/index"
-    ]
+    "drizzle-kit": "^0.31.10",
+    "miniflare": "5.20260815.0-alpha",
+    "tsx": "^4.23.12",
+    "vite-plus": "catalog:"
   }
 }

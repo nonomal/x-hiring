@@ -1,0 +1,21 @@
+export const site = {
+  url: "https://x-hiring.hehehai.cn",
+  name: "X-Hiring",
+  siteName: "X-Hiring",
+  description: "每日最新互联网招聘信息，使用 Cloudflare Workers AI 提取摘要。",
+  tagline: ["每日最新互联网招聘信息", "聚合远程与开发岗位"],
+  keywords: [
+    "招聘",
+    "程序员招聘",
+    "招聘信息",
+    "远程工作",
+    "远程开发",
+    "兼职开发",
+    "远程兼职",
+  ],
+  author: "hehehai",
+  authorUrl: "https://hehehai.cn",
+  githubUrl: "https://github.com/hehehai/x-hiring",
+  ogImage: "https://x-hiring.hehehai.cn/images/og.jpg",
+  icons: [{ rel: "icon", url: "/favicon.svg", type: "image/svg+xml" }],
+};

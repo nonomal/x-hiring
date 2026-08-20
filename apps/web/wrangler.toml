@@ -1,0 +1,79 @@
+name = "x-hiring-web"
+compatibility_date = "2026-08-18"
+compatibility_flags = ["nodejs_compat", "nodejs_compat_populate_process_env"]
+main = "src/server.ts"
+
+[triggers]
+crons = ["0 0,2,5,7,10,15 * * *", "0 4 * * *"]
+
+[observability]
+enabled = true
+
+[vars]
+CORS_ORIGIN = "https://x-hiring.hehehai.cn"
+BETTER_AUTH_URL = "https://x-hiring.hehehai.cn"
+AI_JOB_MODEL = "@cf/openai/gpt-oss-120b"
+AI_GATEWAY_ID = "default"
+
+[ai]
+binding = "AI"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "x-hiring"
+database_id = "bcd9d4a1-0b7f-42a3-8de3-6b8a0c195f06"
+migrations_dir = "../../packages/db/src/migrations"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "929b423ce4f04cb396606e180c3cd034"
+preview_id = "a91b2c8715a24ea7a56a183fa69e747d"
+
+[[queues.producers]]
+binding = "JOBS_QUEUE"
+queue = "x-hiring-jobs"
+
+[[queues.consumers]]
+queue = "x-hiring-jobs"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+dead_letter_queue = "x-hiring-jobs-dlq"
+
+[env.development]
+name = "x-hiring-web-dev"
+
+[env.development.triggers]
+crons = ["0 0,2,5,7,10,15 * * *", "0 4 * * *"]
+
+[env.development.ai]
+binding = "AI"
+remote = true
+
+[env.development.vars]
+CORS_ORIGIN = "https://x-hiring-web-dev.riverhohai.workers.dev"
+BETTER_AUTH_URL = "https://x-hiring-web-dev.riverhohai.workers.dev"
+AI_JOB_MODEL = "@cf/openai/gpt-oss-120b"
+AI_GATEWAY_ID = "default"
+
+[[env.development.d1_databases]]
+binding = "DB"
+database_name = "x-hiring-dev"
+database_id = "55a6a820-a56e-4df4-b250-f1e5f3cbce21"
+migrations_dir = "../../packages/db/src/migrations"
+
+[[env.development.kv_namespaces]]
+binding = "CACHE"
+id = "d03f49cb646143d581be4c45cac1da4b"
+preview_id = "e1e75180779648108a70b1f3bc9abfa2"
+
+[[env.development.queues.producers]]
+binding = "JOBS_QUEUE"
+queue = "x-hiring-jobs-dev"
+
+[[env.development.queues.consumers]]
+queue = "x-hiring-jobs-dev"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 3
+dead_letter_queue = "x-hiring-jobs-dev-dlq"

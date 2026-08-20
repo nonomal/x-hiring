@@ -1,0 +1,43 @@
+{
+  "include": [
+    "src/routes/**/*.ts",
+    "src/routes/**/*.tsx",
+    "src/components/legacy-job-features/**/*.tsx",
+    "src/components/legacy-job-shared/**/*.tsx",
+    "src/components/legacy-job-ui/**/*.tsx",
+    "src/components/features/app/auth/**/*.tsx",
+    "src/components/shared/**/*.tsx",
+    "src/components/ui/**/*.tsx",
+    "src/hooks/legacy-job/**/*.ts",
+    "src/legacy-job-store/**/*.ts",
+    "src/lib/**/*.ts",
+    "src/functions/**/*.ts",
+    "src/router.tsx",
+    "src/server.ts",
+    "src/stores/**/*.ts",
+    "worker-configuration.d.ts"
+  ],
+  "typescript.experimental.useTsgo": true,
+  "compilerOptions": {
+    "target": "ES2022",
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"],
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "*": ["./*"],
+      "@/*": ["./src/*"]
+    },
+    "strictNullChecks": true
+  }
+}

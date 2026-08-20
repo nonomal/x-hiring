@@ -1,43 +1,42 @@
 {
-	"name": "actijob",
-	"version": "0.1.0",
-	"private": true,
-	"author": {
-		"name": "hehehai",
-		"url": "https://twitter.com/riverhohai"
-	},
-	"engines": {
-		"node": ">=v20.8.0"
-	},
-	"packageManager": "pnpm@9.15.3",
-	"workspaces": [
-		"apps/*",
-		"packages/*"
-	],
-	"scripts": {
-		"clean": "git clean -xdf node_modules dist .next",
-		"clean:workspaces": "turbo clean",
-		"build": "turbo build",
-		"dev": "turbo dev",
-		"build:web": "turbo build --filter=@actijob/www",
-		"start:web": "turbo start --filter=@actijob/www",
-		"build:jobs": "turbo build --filter=@actijob/jobs",
-		"start:jobs": "turbo start --filter=@actijob/jobs",
-		"dev:web": "turbo dev --filter=@actijob/www",
-		"dev:jobs": "turbo dev --filter=@actijob/jobs",
-		"postinstall": "pnpm -F db generate",
-		"db:generate": "pnpm -F db generate",
-		"db:push": "pnpm -F db push",
-		"db:studio": "pnpm -F db studio",
-		"db:seed": "pnpm -F db seed",
-		"format": "turbo format --continue -- --write --cache --cache-location='node_modules/.cache/.prettiercache' --ignore-path='../../.gitignore'",
-		"lint": "turbo lint --continue -- --cache --cache-location node_modules/.cache/.eslintcache",
-		"lint:fix": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
-		"typecheck": "turbo typecheck"
-	},
-	"devDependencies": {
-		"prettier": "^3.4.2",
-		"turbo": "^2.3.3",
-		"typescript": "^5.7.2"
-	}
+  "name": "actnow",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "check": "vp check",
+    "dev": "vp run -r --parallel dev",
+    "build": "vp run build:all",
+    "dev:web": "vp run --filter web dev",
+    "dev:start": "vp run --filter web start",
+    "check-types": "vp run check-types:all",
+    "test": "vp test run --passWithNoTests",
+    "db:generate": "vp run --filter @actnow/db db:generate",
+    "db:migrate": "vp run --filter web db:migrate",
+    "db:migrate:local": "vp run --filter web db:migrate:local",
+    "db:migrate:remote": "vp run --filter web db:migrate:remote",
+    "db:migrate:production": "vp run --filter web db:migrate:production",
+    "db:seed": "vp run --filter @actnow/db db:seed",
+    "deploy": "vp run --filter web deploy:production",
+    "deploy:development": "vp run --filter web deploy:development",
+    "deploy:production": "vp run --filter web deploy:production",
+    "cf-typegen": "vp run --filter web cf-typegen",
+    "deploy:destroy": "vp run --filter web destroy"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "@typescript/native-preview": "7.0.0-dev.20260707.2",
+    "typescript": "^7.0.2",
+    "vite-plus": "catalog:"
+  },
+  "engines": {
+    "node": ">=24.11.0"
+  },
+  "packageManager": "pnpm@10.29.3"
 }

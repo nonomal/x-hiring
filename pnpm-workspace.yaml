@@ -1,3 +1,39 @@
 packages:
   - apps/*
   - packages/*
+
+catalog:
+  '@orpc/client': ^1.15.0
+  '@orpc/openapi': ^1.15.0
+  '@orpc/server': ^1.15.0
+  '@orpc/tanstack-query': ^1.15.0
+  '@orpc/zod': ^1.15.0
+  better-auth: ^1.7.1
+  date-fns: ^4.4.0
+  drizzle-orm: ^0.45.2
+  react: ^19.2.8
+  react-dom: ^19.2.8
+  resend: ^6.20.0
+  vite: npm:@voidzero-dev/vite-plus-core@0.2.9
+  vite-plus: 0.2.9
+  zod: 4.4.3
+
+ignoredBuiltDependencies:
+  - esbuild
+  - msw
+
+onlyBuiltDependencies:
+  - workerd
+
+overrides:
+  vite: 'catalog:'
+
+peerDependencyRules:
+  allowAny:
+    - vite
+  allowedVersions:
+    vite: '*'
+  ignoreMissing:
+    - '@stripe/react-stripe-js'
+    - '@stripe/stripe-js'
+    - vite

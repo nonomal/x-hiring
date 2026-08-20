@@ -1,0 +1,22 @@
+{
+  "name": "@actnow/email",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/index.ts"
+    },
+    "./templates/auth": {
+      "default": "./src/templates/auth/index.ts"
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@actnow/common": "workspace:*",
+    "react": "catalog:",
+    "react-email": "^6.9.2",
+    "resend": "catalog:"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18"
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "legacy-example-1",
+    "originId": "example-1",
+    "originUrl": "https://example.com/jobs/example-1",
+    "originSite": "V2EX",
+    "originTitle": "招聘前端工程师",
+    "originCreateAt": "2026-08-20T00:00:00.000Z",
+    "tags": ["前端"],
+    "fullTags": ["React", "TypeScript"],
+    "title": "[前端] React 工程师",
+    "generatedContent": "负责前端开发。"
+  }
+]
